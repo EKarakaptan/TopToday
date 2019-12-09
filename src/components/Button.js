@@ -108,7 +108,6 @@ function createWidget(container, wr) {
       </div>
     </div>  
     `
-
   container.childNodes[0] ? container.childNodes[0].remove() : null
   container.appendChild(weather_elem)
 }
@@ -129,8 +128,7 @@ class WidgetButton extends HTMLElement {
           border-radius: 5px;
           margin: 0 10px;
           box-sizing: border-box;
-          display: flex;       
-
+          display: flex;
         }
 
         button {
@@ -140,16 +138,14 @@ class WidgetButton extends HTMLElement {
           border-radius: 5px;
           box-sizing: border-box;
           margin: 0 10px;
-          cursor: pointer;              
-    
+          cursor: pointer;    
         }
 
         button:hover {
           background: linear-gradient(180deg, #ffe319 0%, #feb326 100%);
           text-shadow: 1px 1px 1px orange, 0 0 2em red;
           color: white;     
-          transition: text-shadow 0.3s ease-in-out;        
-          
+          transition: text-shadow 0.3s ease-in-out;
         }
     `
 
@@ -159,11 +155,16 @@ class WidgetButton extends HTMLElement {
 
     this.weatherRequestButton = document.createElement('button')
     this.weatherRequestButton.innerText = `Get Weather`
-    this.onclick = event => get_weather_by_name(widget1, 'Kharkiv')
+
+    this.onclick = event => {
+      get_weather_by_name(
+        this.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector(
+          '#widget_1'
+        ),
+        'Kharkiv'
+      )
+    }
     wrapper.appendChild(this.weatherRequestButton)
   }
 }
 customElements.define('widget-button', WidgetButton)
-
-let getWeatherByNameButton = document.createElement('widget-button')
-document.body.appendChild(getWeatherByNameButton)

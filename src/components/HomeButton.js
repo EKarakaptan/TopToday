@@ -1,16 +1,3 @@
-async function get_weather_by_coord(container, lat, lon) {
-  let weather_url = `https://api.openweathermap.org/data/2.5/find?lat=${lat}&lon=${lon}&cnt=1&units=metric&APPID=e5986c1eac34b648189cb6f1a03886b9`
-  fetch(weather_url)
-    .then(response => response.json())
-    .then(response => {
-      if (response.id === 0) {
-        setTimeout(() => nav_random_button.click(), 1000)
-        return
-      }
-      createWidget(container, response.list[0])
-    })
-}
-
 async function get_weather_by_id(container, id) {
   let weather_url = `https://api.openweathermap.org/data/2.5/weather?id=${id}&units=metric&APPID=e5986c1eac34b648189cb6f1a03886b9`
   fetch(weather_url)
@@ -28,9 +15,21 @@ async function get_weather_by_name(container, city, country_code) {
 }
 
 function createWidget(container, wr) {
+  state = {
+    name: wr.name,
+    country: wr.sys.country,
+    description: wr.weather[0].description,
+    icon: wr.weather[0].icon,
+    temp: Math.round(wr.main.temp),
+    wind: wr.wind.speed,
+    humidity: wr.main.humidity,
+    pressure: wr.main.pressure,
+    time: new Date(wr.dt * 1000).toLocaleTimeString()
+  }
+
   let weather_elem = document.createElement('div')
-  weather_elem.innerHTML = `
-      <link
+  let weather_elem_content = `
+  <link
       href="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/css/openweathermap-widget-right.min.css"
       rel="stylesheet"
     />
@@ -38,26 +37,22 @@ function createWidget(container, wr) {
       <div class="widget-right__header widget-right__header--brown">
         <div class="widget-right__layout">
           <div>
-            <h2 class="widget-right__title">${wr.name}, ${wr.sys.country}</h2>
-            <p class="widget-right__description">${
-              wr.weather[0].description
-            }</p>
+            <h2 class="widget-right__title">${state.name}, ${state.country}</h2>
+            <p class="widget-right__description">${state.description}</p>
           </div>
         </div>
         <img
-          src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/${
-            wr.weather[0].icon
-          }.png"
+          src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/${state.icon}.png"
           width="128"
           height="128"
-          alt="Weather in ${wr.name}, ${wr.sys.country}"
+          alt="Weather in ${state.name}, ${state.country}"
           class="weather-right__icon weather-right__icon--type1"
         />
       </div>
       <div class="weather-right weather-right--brown">
         <div class="weather-right__layout">
           <div class="weather-right__temperature">
-            ${Math.round(wr.main.temp)}<span>°C</span>
+            ${state.temp}<span>°C</span>
           </div>
           <div class="weather-right__weather">
             <div class="weather-right-card">
@@ -69,25 +64,25 @@ function createWidget(container, wr) {
                   <tr class="weather-right__items">
                     <td class="weather-right__item">Feels like</td>
                     <td class="weather-right__item weather-right__feels">
-                      ${wr.main.temp}<span>°C</span>
+                      ${state.temp}<span>°C</span>
                     </td>
                   </tr>
                   <tr class="weather-right__items">
                     <td class="weather-right__item">Wind</td>
                     <td class="weather-right__item weather-right__wind-speed">
-                      ${wr.wind.speed} m/s
+                      ${state.wind} m/s
                     </td>
                   </tr>
                   <tr class="weather-right-card__items">
                     <td class="weather-right__item">Humidity</td>
                     <td class="weather-right__item weather-right__humidity">
-                      ${wr.main.humidity}%
+                      ${state.humidity}%
                     </td>
                   </tr>  
                   <tr class="weather-right-card__items">
                     <td class="weather-right__item">Pressure</td>
                     <td class="weather-right__item weather-right__pressure">
-                      ${wr.main.pressure} hPa
+                      ${state.pressure} hPa
                     </td>
                   </tr>
                 </tbody>
@@ -102,17 +97,19 @@ function createWidget(container, wr) {
             >OpenWeatherMap</a
           >
           <div class="widget-right__date">
-            ${new Date(wr.dt * 1000).toLocaleTimeString()}
+            ${state.time}
           </div>
         </div>
       </div>
-    </div>  
-    `
-  container.childNodes[0] ? container.childNodes[0].remove() : null
-  container.appendChild(weather_elem)
+    </div> 
+  `
+  weather_elem.innerHTML = weather_elem_content
+  container.childNodes[0]
+    ? (container.childNodes[0].innerHTML = weather_elem_content)
+    : container.appendChild(weather_elem)
 }
 
-class WidgetButton extends HTMLElement {
+class HomeButton extends HTMLElement {
   constructor() {
     super()
     let wrapper = document.createElement('div')
@@ -154,17 +151,17 @@ class WidgetButton extends HTMLElement {
     this.shadow.appendChild(wrapper)
 
     this.weatherRequestButton = document.createElement('button')
-    this.weatherRequestButton.innerText = `Get Weather`
+    this.weatherRequestButton.innerText = `Home`
 
     this.onclick = event => {
       get_weather_by_name(
-        this.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector(
-          '#widget_1'
-        ),
+        document
+          .getElementsByTagName('main-component')[0]
+          .shadow.querySelector('#widget_1'),
         'Kharkiv'
       )
     }
     wrapper.appendChild(this.weatherRequestButton)
   }
 }
-customElements.define('widget-button', WidgetButton)
+customElements.define('home-button', HomeButton)

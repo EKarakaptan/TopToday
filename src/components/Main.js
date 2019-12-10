@@ -101,11 +101,6 @@ class Main extends HTMLElement {
     this.shadow = this.attachShadow({ mode: 'open' })
     this.shadow.appendChild(style)
     this.shadow.appendChild(wrapper)
-
-    // this.weatherRequestButton = document.createElement('button')
-    // this.weatherRequestButton.innerText = `Get Weather`
-    // this.onclick = event => get_weather_by_name(document.body, 'Kharkiv')
-    // wrapper.appendChild(this.weatherRequestButton)
   }
 
   insertComponent = (query_selector, custom_element) => {
@@ -115,7 +110,9 @@ class Main extends HTMLElement {
   }
 
   connectedCallback() {
-    this.insertComponent('#nav_home_button', 'widget-button')
+    this.insertComponent('#nav_home_button', 'home-button')
+    this.insertComponent('#nav_location_button', 'location-button')
+    this.insertComponent('#nav_random_button', 'random-button')
   }
 }
 

@@ -163,5 +163,8 @@ class HomeButton extends HTMLElement {
     }
     wrapper.appendChild(this.weatherRequestButton)
   }
+  connectedCallback() {
+    this.click()
+  }
 }
 customElements.define('home-button', HomeButton)

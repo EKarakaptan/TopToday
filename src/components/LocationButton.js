@@ -78,5 +78,8 @@ class LocationButton extends HTMLElement {
     }
     wrapper.appendChild(this.weatherRequestButton)
   }
+  connectedCallback() {
+    this.click()
+  }
 }
 customElements.define('location-button', LocationButton)

@@ -4,12 +4,6 @@ class Main extends HTMLElement {
     let wrapper = document.createElement('div')
     wrapper.className = 'wrapper'
     wrapper.innerHTML = `
-    <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-    crossorigin="anonymous"
-  />
     <div id="navbar" class="bg-light sticky-top">
         <nav class="navbar navbar-dark bg-dark p-0">
             <div class="container p-0">
@@ -69,12 +63,6 @@ class Main extends HTMLElement {
             </div>
         </div>
     </div>
-
-    <!-- <div id="history_block" class="container bg-light">
-        <h5 class="card-title">Recent places</h5>
-        <div id="recent_places" class="row no-gutters justify-content-md-center shadow p-1 mb-3 bg-white rounded">
-        </div>
-    </div> -->
 
     <div class="container bg-light">
         <div id="history_block" class="container-fluid card-container">

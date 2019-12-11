@@ -3,18 +3,18 @@ async function get_weather_by_coord(container, lat, lon) {
   fetch(weather_url)
     .then(response => response.json())
     .then(response => {
-      console.log(response)
-      if (response.message === 'no results' || response.list[0].id === 0) {
-        function rand(min, max) {
-          return Math.round(Math.random() * (max - min) + min)
-        }
+      if (response.message !== 'accurate') {
+        rand = (min, max) => Math.round(Math.random() * (max - min) + min)
         let lat = rand(-90, 90)
         let lon = rand(-180, 180)
-        setTimeout(() => get_weather_by_coord(container, lat, lon), 2000)
+        setTimeout(() => get_weather_by_coord(container, lat, lon), 1100)
+
         return
       }
       createWidget(container, response.list[0])
+      console.log(response.list[0].name)
     })
+    .catch(err => console.log(err))
 }
 
 class RandomButton extends HTMLElement {

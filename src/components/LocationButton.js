@@ -62,7 +62,7 @@ class LocationButton extends HTMLElement {
         get_weather_by_coord(
           document
             .getElementsByTagName('main-component')[0]
-            .shadow.querySelector('#widget_2'),
+            .shadow.querySelector('#widget_1'),
           lat,
           lon
         )

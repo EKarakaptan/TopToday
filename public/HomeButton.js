@@ -23,7 +23,7 @@ function createWidget(container, wr) {
     temp: Math.round(wr.main.temp),
     wind: wr.wind.speed,
     humidity: wr.main.humidity,
-    pressure: wr.main.pressure,
+    pressure: Math.round(wr.main.pressure * 0.75),
     time: new Date(wr.dt * 1000).toLocaleTimeString()
   }
 
@@ -82,7 +82,7 @@ function createWidget(container, wr) {
                   <tr class="weather-right-card__items">
                     <td class="weather-right__item">Pressure</td>
                     <td class="weather-right__item weather-right__pressure">
-                      ${state.pressure} hPa
+                      ${state.pressure} mmHg
                     </td>
                   </tr>
                 </tbody>
@@ -107,6 +107,7 @@ function createWidget(container, wr) {
   container.childNodes[0]
     ? (container.childNodes[0].innerHTML = weather_elem_content)
     : container.appendChild(weather_elem)
+  weather_elem.parentNode.setAttribute('country', state.country)
 }
 
 class HomeButton extends HTMLElement {
@@ -160,6 +161,7 @@ class HomeButton extends HTMLElement {
           .shadow.querySelector('#widget_1'),
         'Kharkiv'
       )
+      getNews('UA', 'general', '', '#carousel1')
     }
     wrapper.appendChild(this.weatherRequestButton)
   }

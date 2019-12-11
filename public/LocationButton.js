@@ -66,6 +66,7 @@ class LocationButton extends HTMLElement {
           lat,
           lon
         )
+        getNews('UA', 'general', '', '#carousel1')
       }
 
       function error() {

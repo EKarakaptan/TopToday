@@ -8,7 +8,6 @@ async function get_weather_by_coord(container, lat, lon) {
         let lat = rand(-90, 90)
         let lon = rand(-180, 180)
         setTimeout(() => get_weather_by_coord(container, lat, lon), 1100)
-
         return
       }
       createWidget(container, response.list[0])
@@ -74,8 +73,16 @@ class RandomButton extends HTMLElement {
         lat,
         lon
       )
+      getNews('UA', 'general', '', '#carousel2')
     }
     wrapper.appendChild(this.weatherRequestButton)
   }
 }
 customElements.define('random-button', RandomButton)
+
+// console.log(
+//   document
+//     .getElementsByTagName('main-component')[0]
+//     .shadow.querySelector('#widget_2')
+//     .getAttribute('country')
+// )

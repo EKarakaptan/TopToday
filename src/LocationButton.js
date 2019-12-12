@@ -1,16 +1,3 @@
-async function get_weather_by_coord(container, lat, lon) {
-  let weather_url = `https://api.openweathermap.org/data/2.5/find?lat=${lat}&lon=${lon}&cnt=1&units=metric&APPID=e5986c1eac34b648189cb6f1a03886b9`
-  fetch(weather_url)
-    .then(response => response.json())
-    .then(response => {
-      if (response.id === 0) {
-        setTimeout(() => nav_random_button.click(), 1000)
-        return
-      }
-      createWidget(container, response.list[0])
-    })
-}
-
 class LocationButton extends HTMLElement {
   constructor() {
     super()
@@ -47,7 +34,6 @@ class LocationButton extends HTMLElement {
             transition: text-shadow 0.3s ease-in-out;
           }
       `
-
     this.shadow = this.attachShadow({ mode: 'open' })
     this.shadow.appendChild(style)
     this.shadow.appendChild(wrapper)

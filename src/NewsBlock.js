@@ -4,7 +4,7 @@ function createNews(news, container) {
     description: news.description,
     url: news.url,
     urlToImage: news.urlToImage,
-    source: news.source.name
+    source: news.source.name ? news.source.name : news.source.id
   }
 
   let news_elem_content = `
@@ -22,6 +22,7 @@ function createNews(news, container) {
       </div>
     `
   let news_elem = document.createElement('div')
+
   news_elem.innerHTML = news_elem_content
   news_elem.className = 'carousel-item'
   news_elem.setAttribute('data-interval', 8000)

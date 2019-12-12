@@ -97,7 +97,7 @@ class Main extends HTMLElement {
     this.shadow.appendChild(wrapper)
   }
 
-  insertComponent = (query_selector, custom_element) => {
+  insertComponent(query_selector, custom_element) {
     this.shadow
       .querySelector(query_selector)
       .appendChild(document.createElement(custom_element))

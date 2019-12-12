@@ -115,7 +115,7 @@ class Main extends HTMLElement {
   }
 }
 
-letcustomElements.define('main-component', Main)
+customElements.define('main-component', Main)
 
 export function addTextToBody(text) {
   const div = document.createElement('div')

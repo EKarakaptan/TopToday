@@ -57,12 +57,8 @@ class RandomButton extends HTMLElement {
     }
     wrapper.appendChild(this.weatherRequestButton)
   }
+  connectedCallback() {
+    this.click()
+  }
 }
 customElements.define('random-button', RandomButton)
-
-// console.log(
-//   document
-//     .getElementsByTagName('main-component')[0]
-//     .shadow.querySelector('#widget_2')
-//     .getAttribute('country')
-// )

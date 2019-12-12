@@ -1,6 +1,6 @@
 function createWidget(container, wr) {
   state = {
-    name: wr.name,
+    city: wr.name,
     country: wr.sys.country,
     description: wr.weather[0].description,
     icon: wr.weather[0].icon,
@@ -21,7 +21,7 @@ function createWidget(container, wr) {
         <div class="widget-right__header widget-right__header--brown">
           <div class="widget-right__layout">
             <div>
-              <h2 class="widget-right__title">${state.name}, ${state.country}</h2>
+              <h2 class="widget-right__title">${state.city}, ${state.country}</h2>
               <p class="widget-right__description">${state.description}</p>
             </div>
           </div>
@@ -29,7 +29,7 @@ function createWidget(container, wr) {
             src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/${state.icon}.png"
             width="128"
             height="128"
-            alt="Weather in ${state.name}, ${state.country}"
+            alt="Weather in ${state.city}, ${state.country}"
             class="weather-right__icon weather-right__icon--type1"
           />
         </div>
@@ -94,4 +94,11 @@ function createWidget(container, wr) {
 
   let news_container = container.id[container.id.length - 1]
   getNews(state.country, 'general', '', `#carousel${news_container}`)
+  new HistoryItem(
+    state.city,
+    state.country,
+    2,
+    state.temp,
+    state.icon
+  )
 }

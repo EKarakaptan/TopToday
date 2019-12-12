@@ -19,10 +19,15 @@ async function get_weather_by_coord(container, lat, lon) {
   fetch(weather_url)
     .then(response => response.json())
     .then(response => {
-      if (response.id === 0) {
-        setTimeout(() => nav_random_button.click(), 1000)
+      if (response.message !== 'accurate') {
+        rand = (min, max) => Math.round(Math.random() * (max - min) + min)
+        let lat = rand(-90, 90)
+        let lon = rand(-180, 180)
+        setTimeout(() => get_weather_by_coord(container, lat, lon), 1100)
         return
       }
       createWidget(container, response.list[0])
+      console.log(response.list[0].name)
     })
+    .catch(err => console.log(err))
 }

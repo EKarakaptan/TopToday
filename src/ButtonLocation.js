@@ -63,6 +63,7 @@ class LocationButton extends HTMLElement {
         : console.log('Geolocation is not supported by your browser')
       navigator.geolocation.getCurrentPosition(success, error)
     }
+
     wrapper.appendChild(this.weatherRequestButton)
   }
   connectedCallback() {

@@ -3,7 +3,6 @@ async function getNews(country, category, key, container) {
   fetch(news_url)
     .then(response => response.json())
     .then(response => {
-      console.log(response)
       response.articles.forEach(news => {
         createNews(news, container)
         document

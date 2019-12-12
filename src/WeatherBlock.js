@@ -91,5 +91,5 @@ function createWidget(container, wr) {
   container.childNodes[0]
     ? (container.childNodes[0].innerHTML = weather_elem_content)
     : container.appendChild(weather_elem)
-  weather_elem.parentNode.setAttribute('country', state.country)
+  // weather_elem.parentNode.setAttribute('country', state.country)
 }

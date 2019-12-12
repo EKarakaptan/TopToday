@@ -4,6 +4,10 @@ class HomeButton extends HTMLElement {
     let wrapper = document.createElement('div')
     wrapper.className = 'wrapper'
 
+    let widget1 = document
+      .getElementsByTagName('main-component')[0]
+      .shadow.querySelector('#widget_1')
+
     let style = document.createElement('style')
     style.textContent = `
         .wrapper {          
@@ -42,13 +46,8 @@ class HomeButton extends HTMLElement {
     this.weatherRequestButton.innerText = `Home`
 
     this.onclick = event => {
-      get_weather_by_name(
-        document
-          .getElementsByTagName('main-component')[0]
-          .shadow.querySelector('#widget_1'),
-        'Kharkiv'
-      )
-      getNews('UA', 'general', '', '#carousel1')
+      get_weather_by_name(widget1, 'Kharkiv')
+      getNews('UA', 'general', '', 'carousel1')
     }
     wrapper.appendChild(this.weatherRequestButton)
   }

@@ -52,7 +52,6 @@ class LocationButton extends HTMLElement {
           lat,
           lon
         )
-        getNews('UA', 'general', '', '#carousel1')
       }
 
       function error() {
@@ -67,7 +66,7 @@ class LocationButton extends HTMLElement {
     wrapper.appendChild(this.weatherRequestButton)
   }
   connectedCallback() {
-    this.click()
+    // this.click()
   }
 }
 customElements.define('location-button', LocationButton)

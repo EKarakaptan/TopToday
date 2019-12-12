@@ -54,7 +54,6 @@ class RandomButton extends HTMLElement {
         lat,
         lon
       )
-      getNews('UA', 'general', '', '#carousel2')
     }
     wrapper.appendChild(this.weatherRequestButton)
   }

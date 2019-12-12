@@ -91,5 +91,7 @@ function createWidget(container, wr) {
   container.childNodes[0]
     ? (container.childNodes[0].innerHTML = weather_elem_content)
     : container.appendChild(weather_elem)
-  // weather_elem.parentNode.setAttribute('country', state.country)
+
+  let news_container = container.id[container.id.length - 1]
+  getNews(state.country, 'general', '', `#carousel${news_container}`)
 }

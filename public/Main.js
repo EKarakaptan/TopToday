@@ -85,11 +85,6 @@ class Main extends HTMLElement {
             </div>
         </footer>
     </div>
-    <script src="./HomeButton.js"></script>
-    <script src="./LocationButton.js"></script>
-    <script src="./RandomButton.js"></script>
-    <script src="./News.js"></script>
-    <script src="./index.js"></script>
     `
     let style = document.createElement('style')
     style.textContent = `
@@ -116,11 +111,4 @@ class Main extends HTMLElement {
 }
 
 customElements.define('main-component', Main)
-
-export function addTextToBody(text) {
-  const div = document.createElement('div')
-  div.textContent = text
-  document.body.appendChild(div)
-}
-
-// let main = document.body.appendChild(document.createElement('main-component'))
+document.body.appendChild(document.createElement('main-component'))

@@ -81,7 +81,7 @@ class Main extends HTMLElement {
     <div id="footer" class="container bg-light">
         <footer class="page-footer">
             <div class="footer-copyright text-center py-3 text-muted">
-                ©TopToday - Eugene Karakaptan - A-Level FEA15 2019 powered by NewsAPI.org
+                ©TopToday - Eugene Karakaptan - A-Level FEA15(JS) 2019 powered by NewsAPI.org
             </div>
         </footer>
     </div>
@@ -107,8 +107,14 @@ class Main extends HTMLElement {
     this.insertComponent('#nav_home_button', 'home-button')
     this.insertComponent('#nav_location_button', 'location-button')
     this.insertComponent('#nav_random_button', 'random-button')
+    this.insertComponent('#nav_city_input', 'input-component')
   }
 }
 
 customElements.define('main-component', Main)
 document.body.appendChild(document.createElement('main-component'))
+
+getElem = elemSelector =>
+  document
+    .getElementsByTagName('main-component')[0]
+    .shadow.querySelector(elemSelector)

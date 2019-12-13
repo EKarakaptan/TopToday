@@ -10,7 +10,7 @@ class LocationButton extends HTMLElement {
             justify-content: center;
             padding-top: 100px;          
             width: 100%;
-            padding: 20px;    
+            padding: 1px;    
             border-radius: 5px;
             margin: 0 10px;
             box-sizing: border-box;
@@ -18,7 +18,7 @@ class LocationButton extends HTMLElement {
           }
   
           button {
-            padding: 20px;
+            padding: 10px;
             background: linear-gradient(90deg, #ffe319 0%, #feb326 100%);          
             border: 2px solid #fff;
             border-radius: 5px;
@@ -45,13 +45,8 @@ class LocationButton extends HTMLElement {
       function success(position) {
         let lat = position.coords.latitude
         let lon = position.coords.longitude
-        get_weather_by_coord(
-          document
-            .getElementsByTagName('main-component')[0]
-            .shadow.querySelector('#widget_1'),
-          lat,
-          lon
-        )
+        let widget1 = getElem('#widget_1')
+        get_weather_by_coord(widget1, lat, lon)
       }
 
       function error() {

@@ -4,9 +4,7 @@ class HomeButton extends HTMLElement {
     let wrapper = document.createElement('div')
     wrapper.className = 'wrapper'
 
-    let widget1 = document
-      .getElementsByTagName('main-component')[0]
-      .shadow.querySelector('#widget_1')
+    let widget1 = getElem('#widget_1')
 
     let style = document.createElement('style')
     style.textContent = `
@@ -14,7 +12,7 @@ class HomeButton extends HTMLElement {
           justify-content: center;
           padding-top: 100px;          
           width: 100%;
-          padding: 20px;    
+          padding: 1px;    
           border-radius: 5px;
           margin: 0 10px;
           box-sizing: border-box;
@@ -22,7 +20,7 @@ class HomeButton extends HTMLElement {
         }
 
         button {
-          padding: 20px;
+          padding: 10px;
           background: linear-gradient(90deg, #ffe319 0%, #feb326 100%);          
           border: 2px solid #fff;
           border-radius: 5px;
@@ -43,7 +41,7 @@ class HomeButton extends HTMLElement {
     this.shadow.appendChild(wrapper)
 
     this.weatherRequestButton = document.createElement('button')
-    this.weatherRequestButton.innerText = `Home`
+    this.weatherRequestButton.innerHTML = 'Home'
 
     this.onclick = event => {
       get_weather_by_name(widget1, 'Kharkiv')

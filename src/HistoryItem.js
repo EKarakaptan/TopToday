@@ -41,21 +41,15 @@ class HistoryItem extends HTMLElement {
           overflow-x: auto;
       }
       `
-    let img = item.getElementsByTagName('img')[0]
+    // let img = item.getElementsByTagName('img')[0]
     // img.onclick = function(event) {
     //   document.querySelector('#container-widget_2')
     //     ? document.querySelector('#container-widget_2').remove()
     //     : null
     //   addWidget(item.name, 'widget_2')
     // }
-    document
-      .getElementsByTagName('main-component')[0]
-      .shadow.querySelector('#recent_places')
-      .appendChild(item)
-    document
-      .getElementsByTagName('main-component')[0]
-      .shadow.querySelector('#recent_places')
-      .appendChild(style)
+    getElem('#recent_places').appendChild(item)
+    getElem('#recent_places').appendChild(style)
     item.getElementsByTagName('mark')[0].innerText = `${temp}°C`
   }
 }

@@ -17,18 +17,12 @@ async function getNews(country, category, key, container) {
     .then(response => {
       if (response.totalResults === 0) {
         createNews(empty_news, container)
-        document
-          .getElementsByTagName('main-component')[0]
-          .shadow.querySelector(container).childNodes[0].className =
-          'carousel-item active'
+        getElem(container).childNodes[0].className = 'carousel-item active'
         return
       }
       response.articles.forEach(news => {
         createNews(news, container)
-        document
-          .getElementsByTagName('main-component')[0]
-          .shadow.querySelector(container).childNodes[0].className =
-          'carousel-item active'
+        getElem(container).childNodes[0].className = 'carousel-item active'
       })
     })
 }

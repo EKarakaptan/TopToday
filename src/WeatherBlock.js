@@ -94,11 +94,6 @@ function createWidget(container, wr) {
 
   let news_container = container.id[container.id.length - 1]
   getNews(state.country, 'general', '', `#carousel${news_container}`)
-  new HistoryItem(
-    state.city,
-    state.country,
-    2,
-    state.temp,
-    state.icon
-  )
+
+  new HistoryItem(state.city, state.country, 2, state.temp, state.icon)
 }

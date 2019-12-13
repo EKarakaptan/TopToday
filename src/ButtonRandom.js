@@ -10,7 +10,7 @@ class RandomButton extends HTMLElement {
               justify-content: center;
               padding-top: 100px;          
               width: 100%;
-              padding: 20px;    
+              padding: 1px;    
               border-radius: 5px;
               margin: 0 10px;
               box-sizing: border-box;
@@ -18,7 +18,7 @@ class RandomButton extends HTMLElement {
             }
     
             button {
-              padding: 20px;
+              padding: 10px;
               background: linear-gradient(90deg, #ffe319 0%, #feb326 100%);          
               border: 2px solid #fff;
               border-radius: 5px;
@@ -47,13 +47,8 @@ class RandomButton extends HTMLElement {
       }
       let lat = rand(-90, 90)
       let lon = rand(-180, 180)
-      get_weather_by_coord(
-        document
-          .getElementsByTagName('main-component')[0]
-          .shadow.querySelector('#widget_2'),
-        lat,
-        lon
-      )
+      let widget2 = getElem('#widget_2')
+      get_weather_by_coord(widget2, lat, lon)
     }
     wrapper.appendChild(this.weatherRequestButton)
   }

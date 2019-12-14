@@ -31,9 +31,9 @@ class Main extends HTMLElement {
     <div id="regform" class="container bg-light d-flex justify-content-around pt-1"></div>
 
     <div id="widgets_block" class="container bg-light">
-        <div class="row">
-            <div class="col">
-                <div class="container card shadow-sm mb-2 p-2 rounded" style="width: 90%;" align="right">
+        <div class="card-deck">
+            <div class="card shadow-sm">
+                <div class="card-body mb-2 p-2 rounded" style="width: 90%;" align="right">
                     <div id="widget_1"></div>
                     <div class="card-body p-1">
                         <div id="carousel1_nav" class="carousel slide" data-ride="carousel">
@@ -51,9 +51,9 @@ class Main extends HTMLElement {
                 </div>
             </div>
 
-            <div class="col">
+            <div class="card shadow-sm">
                 <div id="anchor2"></div>
-                <div class="container card shadow-sm mb-2 p-2 rounded" style="width: 90%">
+                <div class="card-body mb-2 p-2 rounded" style="width: 90%">
                     <div id="widget_2"></div>
                     <div class="card-body p-1">
                         <div id="carousel2_nav" class="carousel slide" data-ride="carousel">
@@ -76,11 +76,11 @@ class Main extends HTMLElement {
     <div class="container bg-light">
         <div id="history_block" class="container-fluid card-container">
             <h5 class="card-title">Recent places</h5>
-            <div id="recent_places" style="height: 221px" class="row text-center flex-nowrap flex-wrap rounded">
+            <div id="recent_places" style="height: 150px" class="row text-center flex-nowrap flex-wrap rounded">
             </div>
         </div>
     </div>
-
+    
     <div id="footer" class="container bg-light">
         <footer class="page-footer">
             <div class="footer-copyright text-center py-3 text-muted">
@@ -116,7 +116,6 @@ class Main extends HTMLElement {
     // (происходит в document.adoptNode, используется очень редко)
   }
 }
-
 customElements.define('main-element', Main)
 document.body.appendChild(document.createElement('main-element'))
 

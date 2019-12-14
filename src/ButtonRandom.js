@@ -25,5 +25,4 @@ class RandomButton extends HTMLElement {
     this.click()
   }
 }
-
 customElements.define('random-button', RandomButton)

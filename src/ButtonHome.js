@@ -18,5 +18,4 @@ class HomeButton extends HTMLElement {
     }
   }
 }
-
 customElements.define('home-button', HomeButton)

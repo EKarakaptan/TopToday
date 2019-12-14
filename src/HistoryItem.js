@@ -10,7 +10,7 @@ class HistoryItem extends HTMLElement {
     item.name = id
     item.innerHTML = `
       <a href="#">
-      <div class="thumbnail text-center shadow-lg">
+      <div class="thumbnail text-center shadow rounded">
         <img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/${state.icon}.png" alt="recent_place" class="rounded img-responsive">
           <div class="caption">
           <h3 id="h_temp" class="text-weight-bold text-right text-white m-0 p-2"><mark class="p-1 rounded"></mark></h3>  

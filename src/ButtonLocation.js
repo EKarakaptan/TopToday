@@ -32,5 +32,4 @@ class LocationButton extends HTMLElement {
     this.click()
   }
 }
-
 customElements.define('location-button', LocationButton)

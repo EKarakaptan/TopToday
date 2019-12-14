@@ -24,5 +24,4 @@ class Input extends HTMLElement {
     this.onclick = event => {}
   }
 }
-
 customElements.define('input-component', Input)

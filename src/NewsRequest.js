@@ -1,7 +1,5 @@
 async function getNews(country, category, key, container) {
-  let news_block = document
-    .getElementsByTagName('main-component')[0]
-    .shadow.querySelector(container)
+  let news_block = getElem(container)
   news_block ? (news_block.innerHTML = '') : null
   let news_url = `https://newsapi.org/v2/top-headlines?q=${key}&country=${country}&category=${category}&apiKey=28509d92c9744a5da35e5ad1ffa12635`
 
@@ -17,12 +15,14 @@ async function getNews(country, category, key, container) {
     .then(response => {
       if (response.totalResults === 0) {
         createNews(empty_news, container)
-        getElem(container).childNodes[0].className = 'carousel-item active'
+        getElem(container).childNodes[0].className =
+          'carousel-item active'
         return
       }
       response.articles.forEach(news => {
         createNews(news, container)
-        getElem(container).childNodes[0].className = 'carousel-item active'
+        getElem(container).childNodes[0].className =
+          'carousel-item active'
       })
     })
 }

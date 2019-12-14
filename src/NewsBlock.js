@@ -25,7 +25,7 @@ function createNews(news, container) {
 
   news_elem.innerHTML = news_elem_content
   news_elem.className = 'carousel-item'
-  news_elem.setAttribute('data-interval', 500)
+  news_elem.setAttribute('data-interval', 20000)
 
   getElem(container).appendChild(news_elem)
 }

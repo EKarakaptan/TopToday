@@ -20,10 +20,14 @@ async function get_weather_by_coord(container, lat, lon) {
     .then(response => response.json())
     .then(response => {
       if (response.message !== 'accurate') {
-        rand = (min, max) => Math.round(Math.random() * (max - min) + min)
+        rand = (min, max) =>
+          Math.round(Math.random() * (max - min) + min)
         let lat = rand(-90, 90)
         let lon = rand(-180, 180)
-        setTimeout(() => get_weather_by_coord(container, lat, lon), 1100)
+        setTimeout(
+          () => get_weather_by_coord(container, lat, lon),
+          1100
+        )
         return
       }
       createWidget(container, response.list[0])

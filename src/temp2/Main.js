@@ -1,18 +1,15 @@
 class Main extends HTMLElement {
   constructor() {
     super()
-  }
-
-  insertComponent(query_selector, element) {
-    this.querySelector(query_selector).appendChild(
-      document.createElement(element)
-    )
-  }
-
-  connectedCallback() {
     let wrapper = document.createElement('div')
     wrapper.className = 'wrapper'
     wrapper.innerHTML = `
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous"
+    />
     <div id="navbar" class="bg-light sticky-top">
         <nav class="navbar navbar-dark bg-dark p-0">
             <div class="container p-0">
@@ -89,36 +86,35 @@ class Main extends HTMLElement {
         </footer>
     </div>
     `
-    this.appendChild(wrapper)
+    let style = document.createElement('style')
+    style.textContent = `
+        .wrapper {          
+          justify-content: center;
+        }
+    `
+    this.shadow = this.attachShadow({ mode: 'open' })
+    this.shadow.appendChild(style)
+    this.shadow.appendChild(wrapper)
+  }
+
+  insertComponent(query_selector, element) {
+    this.shadow
+      .querySelector(query_selector)
+      .appendChild(document.createElement(element))
+  }
+
+  connectedCallback() {
     this.insertComponent('#nav_home_button', 'home-button')
     this.insertComponent('#nav_location_button', 'location-button')
     this.insertComponent('#nav_random_button', 'random-button')
     this.insertComponent('#nav_city_input', 'input-component')
   }
-
-  disconnectedCallback() {
-    // браузер вызывает этот метод при удалении элемента из документа
-    // (может вызываться много раз, если элемент многократно добавляется/удаляется)
-  }
-
-  static get observedAttributes() {
-    return [
-      /* массив имён атрибутов для отслеживания их изменений */
-    ]
-  }
-
-  attributeChangedCallback(name, oldValue, newValue) {
-    // вызывается при изменении одного из перечисленных выше атрибутов
-  }
-
-  adoptedCallback() {
-    // вызывается, когда элемент перемещается в новый документ
-    // (происходит в document.adoptNode, используется очень редко)
-  }
 }
 
-customElements.define('main-element', Main)
-document.body.appendChild(document.createElement('main-element'))
+customElements.define('main-component', Main)
+document.body.appendChild(document.createElement('main-component'))
 
 getElem = elemSelector =>
-  document.querySelector('main-element').querySelector(elemSelector)
+  document
+    .getElementsByTagName('main-component')[0]
+    .shadow.querySelector(elemSelector)

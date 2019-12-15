@@ -12,6 +12,7 @@ function createWidget(container, wr) {
   }
 
   let widgetId = container.id[container.id.length - 1]
+  console.log(container, container.id, widgetId, data)
   let weather_elem = document.createElement('div')
   let weather_elem_content = `
     <link
@@ -100,11 +101,11 @@ function createWidget(container, wr) {
     `#carousel${widgetId}`
   )
 
-  if (widgetId === 1) {
+  if (widgetId == 1) {
     data.country1 = state.country
     data.city1 = state.city
   } else {
-    if (widgetId === 2) {
+    if (widgetId == 2) {
       data.country2 = state.country
       data.city2 = state.city
     }

@@ -3,7 +3,4 @@
 ## My first project based on pure JS 
 ## :warning: JS web-components, Bootstrap
 
-
-
-
 [**TopToday - live demo**](https://ekarakaptan.github.io/toptoday/public/)

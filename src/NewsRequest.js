@@ -2,6 +2,8 @@ async function getNews(country, category, key, container) {
   let news_block = getElem(container)
   news_block ? (news_block.innerHTML = '') : null
   let news_url = `https://newsapi.org/v2/top-headlines?q=${key}&country=${country}&category=${category}&apiKey=28509d92c9744a5da35e5ad1ffa12635`
+  // let news_url = `https://newsapi.org/v2/everything?q=bitcoin&apiKey=28509d92c9744a5da35e5ad1ffa12635`
+  // let news_url = `https://newsapi.org/v2/everything?domains=wsj.com,nytimes.com&apiKey=28509d92c9744a5da35e5ad1ffa12635`
 
   let empty_news = {
     title: `Country: ${country}`,

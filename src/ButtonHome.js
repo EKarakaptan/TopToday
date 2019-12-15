@@ -14,7 +14,6 @@ class HomeButton extends HTMLElement {
 
     this.onclick = event => {
       get_weather_by_name(widget, 'Kharkiv')
-      getNews('UA', 'general', '', 'carousel1')
     }
   }
 }

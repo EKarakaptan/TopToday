@@ -1,5 +1,6 @@
 function createWidget(container, wr) {
   state = {
+    containerID: container.id[container.id.length - 1],
     city: wr.name,
     country: wr.sys.country,
     description: wr.weather[0].description,
@@ -92,8 +93,26 @@ function createWidget(container, wr) {
     ? (container.childNodes[0].innerHTML = weather_elem_content)
     : container.appendChild(weather_elem)
 
-  let news_container = container.id[container.id.length - 1]
-  getNews(state.country, 'general', '', `#carousel${news_container}`)
+  getNews(
+    state.country,
+    data.category,
+    data.keyword,
+    `#carousel${state.containerID}`
+  )
 
-  new HistoryItem(state.city, state.country, 2, state.temp, state.icon)
+  if (state.containerID === 1) {
+    data.country1 = state.country
+    data.city1 = state.city
+  } else {
+    data.country2 = state.country
+    data.city2 = state.city
+  }
+
+  new HistoryItem(
+    state.city,
+    state.country,
+    2,
+    state.temp,
+    state.icon
+  )
 }

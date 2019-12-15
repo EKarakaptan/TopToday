@@ -20,7 +20,6 @@ class Input extends HTMLElement {
     </form>
     `
     this.appendChild(wrapper)
-
     this.onclick = event => {}
   }
 }

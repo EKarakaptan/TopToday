@@ -13,7 +13,7 @@ function createNews(news, container) {
       <div class="row">
           <div class="col-6">
               <a href="${state.url}">
-                  <img src="${state.urlToImage}" class="card-img-top shadow rounded" width="200">
+                  <img src="${state.urlToImage}" class="card-img-top rounded">
               </a>
           </div>
           <div class="col-6">
@@ -26,6 +26,5 @@ function createNews(news, container) {
   news_elem.innerHTML = news_elem_content
   news_elem.className = 'carousel-item'
   news_elem.setAttribute('data-interval', 20000)
-
   getElem(container).appendChild(news_elem)
 }

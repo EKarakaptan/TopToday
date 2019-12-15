@@ -11,7 +11,6 @@ class HomeButton extends HTMLElement {
     `
     this.appendChild(wrapper)
     let widget = getElem('#widget_1')
-    console.log(widget.id[widget.id.length - 1])
 
     this.onclick = event => {
       get_weather_by_name(widget, 'Kharkiv')

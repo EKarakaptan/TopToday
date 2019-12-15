@@ -7,7 +7,9 @@ class RandomButton extends HTMLElement {
     let wrapper = document.createElement('div')
     wrapper.className = 'wrapper'
     wrapper.innerHTML = `
-    <a class="navbar-brand text-light m-auto" id="random" title="Random City"><h3 class="fas fa-globe m-0"></h3></a>
+    <a class="navbar-brand text-light m-auto" id="random" title="Random City">
+      <h3 class="fas fa-globe m-0"></h3>
+    </a>
     `
     this.appendChild(wrapper)
     let widget = getElem('#widget_2')
@@ -18,7 +20,13 @@ class RandomButton extends HTMLElement {
       }
       let lat = rand(-90, 90)
       let lon = rand(-180, 180)
-      get_weather_by_coord(widget, lat, lon)
+
+      get_weather_by_coord(widget, lat, lon, 'random-button')
+      wrapper.innerHTML = `
+      <a class="navbar-brand text-light m-auto" id="random" title="Random City">
+        <h3 class="fas fa-circle-notch fa-spin m-0 text-warning"></h3>
+      </a>
+      `
     }
 
     this.click()

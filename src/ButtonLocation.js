@@ -7,7 +7,9 @@ class LocationButton extends HTMLElement {
     let wrapper = document.createElement('div')
     wrapper.className = 'wrapper'
     wrapper.innerHTML = `
-    <a class="navbar-brand text-light m-auto" id="location" title="Current Location"><h3 class="fas fa-location-arrow m-0"></h3></a>
+    <a class="navbar-brand text-light m-auto" id="location" title="Current Location">
+      <h3 class="fas fa-location-arrow m-0"></h3>
+    </a>
     `
     this.appendChild(wrapper)
     let widget = getElem('#widget_1')
@@ -16,7 +18,12 @@ class LocationButton extends HTMLElement {
       function success(position) {
         let lat = position.coords.latitude
         let lon = position.coords.longitude
-        get_weather_by_coord(widget, lat, lon)
+        get_weather_by_coord(widget, lat, lon, 'location-button')
+        wrapper.innerHTML = `
+        <a class="navbar-brand text-light m-auto" id="location" title="Random City">
+          <h3 class="fas fa-circle-notch fa-spin m-0 text-warning"></h3>
+        </a>
+        `
       }
 
       function error() {

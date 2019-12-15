@@ -1,18 +1,17 @@
-function createWidget(container, wr) {
+function createWidget(container, response) {
   state = {
-    city: wr.name,
-    country: wr.sys.country,
-    description: wr.weather[0].description,
-    icon: wr.weather[0].icon,
-    temp: Math.round(wr.main.temp),
-    wind: wr.wind.speed,
-    humidity: wr.main.humidity,
-    pressure: Math.round(wr.main.pressure * 0.75),
-    time: new Date(wr.dt * 1000).toLocaleTimeString()
+    city: response.name,
+    country: response.sys.country,
+    description: response.weather[0].description,
+    icon: response.weather[0].icon,
+    temp: Math.round(response.main.temp),
+    wind: response.wind.speed,
+    humidity: response.main.humidity,
+    pressure: Math.round(response.main.pressure * 0.75),
+    time: new Date(response.dt * 1000).toLocaleTimeString()
   }
 
   let widgetId = container.id[container.id.length - 1]
-  console.log(container, container.id, widgetId, data)
   let weather_elem = document.createElement('div')
   let weather_elem_content = `
     <link

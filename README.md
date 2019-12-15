@@ -1,5 +1,9 @@
-# TopTodayJS
+# TopToday
+# <img src="https://ekarakaptan.github.io/toptoday/public/favicon.png" width="100"> TopToday
+## My first project based on pure JS 
+## :warning: JS web-components, Bootstrap
 
-## :warning: без реакта и вебпака :warning:
 
-[**TopTodayJS - direct link**](https://ekarakaptan.github.io/TopTodayJS/public)
+
+
+[**TopToday - live demo**](https://ekarakaptan.github.io/toptoday/public/)

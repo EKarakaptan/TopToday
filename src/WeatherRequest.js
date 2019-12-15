@@ -31,7 +31,6 @@ async function get_weather_by_coord(container, lat, lon) {
         return
       }
       createWidget(container, response.list[0])
-      console.log(response.list[0].name)
     })
     .catch(err => console.log(err))
 }

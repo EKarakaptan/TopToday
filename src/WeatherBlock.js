@@ -1,6 +1,5 @@
 function createWidget(container, wr) {
   state = {
-    containerID: container.id[container.id.length - 1],
     city: wr.name,
     country: wr.sys.country,
     description: wr.weather[0].description,
@@ -12,6 +11,7 @@ function createWidget(container, wr) {
     time: new Date(wr.dt * 1000).toLocaleTimeString()
   }
 
+  let widgetId = container.id[container.id.length - 1]
   let weather_elem = document.createElement('div')
   let weather_elem_content = `
     <link
@@ -97,15 +97,17 @@ function createWidget(container, wr) {
     state.country,
     data.category,
     data.keyword,
-    `#carousel${state.containerID}`
+    `#carousel${widgetId}`
   )
 
-  if (state.containerID === 1) {
+  if (widgetId === 1) {
     data.country1 = state.country
     data.city1 = state.city
   } else {
-    data.country2 = state.country
-    data.city2 = state.city
+    if (widgetId === 2) {
+      data.country2 = state.country
+      data.city2 = state.city
+    }
   }
 
   new HistoryItem(

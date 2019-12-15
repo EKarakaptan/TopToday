@@ -70,6 +70,8 @@ class Menu extends HTMLElement {
 
     getElem(`#News_selector`).onchange = event => {
       data.category = `${event.target.value}`
+      getElem(`#nav_news_icon`).innerHTML =
+        event.target.nextSibling.nextSibling.innerHTML
       getNews(
         data.country1,
         data.category,
@@ -86,6 +88,9 @@ class Menu extends HTMLElement {
 
     getElem(`#key`).onchange = event => {
       data.keyword = getElem(`#keyword`).value
+      getElem(`#nav_news_key`).hidden =
+        getElem(`#keyword`).value === ''
+
       getNews(
         data.country1,
         data.category,

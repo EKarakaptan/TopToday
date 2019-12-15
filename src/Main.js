@@ -17,7 +17,11 @@ class Main extends HTMLElement {
         <nav class="navbar navbar-dark bg-dark p-0">
             <div class="container p-0">
                 <div id="nav_menu_button" class="nav-item dropdown pl-2"></div>
-                <div id="nav_news_icon" class="navbar text-light m-0 p-0"></div>
+                <div class="navbar text-light m-0 p-0"></div>
+                  <div class="ul">
+                    <div id="nav_news_icon" class="li text-light m-0 p-0"></div>                                           
+                    <div id="nav_news_key" class="li text-light text-center" hidden>keyword</div>                                      
+                  </div>                
                 <a id="nav_home_button" class="navbar-brand text-light m-auto"></a>
                 <a id="nav_location_button" class="navbar-brand text-light m-auto"></a>
                 <a id="nav_random_button" class="navbar-brand text-light m-auto"></a>

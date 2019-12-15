@@ -26,7 +26,8 @@ class HistoryItem extends HTMLElement {
       }
 
       .thumbnail {
-          position: relative;
+          position: relative;          
+          background: linear-gradient(25deg, #d9ecef 0%, #83c0ca 100%);           
       }
 
       .caption {

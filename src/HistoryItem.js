@@ -12,7 +12,7 @@ class HistoryItem extends HTMLElement {
         <img class="img-condition" src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/${state.icon}.png" alt="recent_place" class="rounded img-responsive">
           <div class="caption">
           <h3 id="h_temp" class="text-weight-bold text-right text-white m-0 p-2"><mark class="p-1 rounded"></mark></h3>  
-          <h6 class="text-weight-bold text-dark bg-warning">${city}-${country}</h6>
+          <h6 class="text-weight-bold text-dark bg-warning">${city}, ${country}</h6>
           </div>
       </div>
       </a>

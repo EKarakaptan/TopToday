@@ -7,7 +7,7 @@ class Input extends HTMLElement {
     let wrapper = document.createElement('div')
     wrapper.className = 'wrapper'
     wrapper.innerHTML = `
-    <form id="input_form" class="input-group pl-3 pb-1 pt-1 m-0">
+    <form id="input_form" class="input-group pl-1 pb-1 ml-auto mr-auto">
     <input id="input_value" type="text" class="form-control border-right-0" placeholder="City name..." aria-label="Search" aria-describedby="button-addon2" />
     <div class="input-group-append warning">
         <p class="input-group-text bg-white text-warning" id="err" data-toggle="tooltip" data-placement="bottom" title="Clear">

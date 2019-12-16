@@ -23,6 +23,9 @@ class HistoryItem extends HTMLElement {
     style.textContent = `
       img {
       max-width: 100%;
+      position: relative;
+      top: -18px;
+      left: -15px;
       }
 
       .thumbnail {

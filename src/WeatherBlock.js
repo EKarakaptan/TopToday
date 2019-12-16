@@ -76,7 +76,7 @@ function createWidget(container, response) {
             </div>
           </div>
         </div>
-        <div class="widget-right__footer widget-right__footer--brown">
+        <div class="widget-right__footer widget-right__footer--brown pt-1">
           <div class="widget-right__layout">
             <a href="https://openweathermap.org/" target="_blank" class="widget-right__link"
               >OpenWeatherMap</a
@@ -93,12 +93,7 @@ function createWidget(container, response) {
     ? (container.childNodes[0].innerHTML = weather_elem_content)
     : container.appendChild(weather_elem)
 
-  getNews(
-    state.country,
-    data.category,
-    data.keyword,
-    `#carousel${widgetId}`
-  )
+  getNews(state.country, data.category, data.keyword, `#carousel${widgetId}`)
 
   if (widgetId == 1) {
     data.country1 = state.country
@@ -110,11 +105,5 @@ function createWidget(container, response) {
     }
   }
 
-  new HistoryItem(
-    state.city,
-    state.country,
-    2,
-    state.temp,
-    state.icon
-  )
+  new HistoryItem(state.city, state.country, 2, state.temp, state.icon)
 }

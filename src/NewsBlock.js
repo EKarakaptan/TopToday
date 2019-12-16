@@ -9,7 +9,7 @@ function createNews(news, container) {
 
   let news_elem_content = `
       <h5 class="card-title">${state.title}</h5>
-      <p class="card-text">${state.description}</p>
+      <p class="card-text pb-2">${state.description}</p>
       <div class="row">
           <div class="col-6">
               <a href="${state.url}">

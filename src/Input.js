@@ -7,7 +7,7 @@ class Input extends HTMLElement {
     let wrapper = document.createElement('div')
     wrapper.className = 'wrapper'
     wrapper.innerHTML = `
-    <form id="input_form" class="input-group pl-3 pb-1 pt-1">
+    <form id="input_form" class="input-group pl-3 pb-1 pt-1 m-0">
     <input id="input_value" type="text" class="form-control border-right-0" placeholder="City name..." aria-label="Search" aria-describedby="button-addon2" />
     <div class="input-group-append warning">
         <p class="input-group-text bg-white text-warning" id="err" data-toggle="tooltip" data-placement="bottom" title="Clear">
@@ -23,8 +23,7 @@ class Input extends HTMLElement {
 
     getElem('#input_form').onsubmit = event => {
       event.preventDefault()
-      let city_request = event.target.querySelector('#input_value')
-        .value
+      let city_request = event.target.querySelector('#input_value').value
       let widget = getElem('#widget_2')
       let arr_request = city_request.split(',')
       arr_request[0] ? (data.city2 = arr_request[0].trim()) : null

@@ -9,7 +9,7 @@ class AuthButton extends HTMLElement {
     wrapper.innerHTML = `
     <a id="auth_btn" class="navbar-brand text-warning" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
     aria-expanded="false">
-      <h3 class="fas fa-user m-0"></h3>
+      <h4 class="fas fa-user m-0"></h4>
     </a>
     <div class="dropdown-menu dropdown-menu-right bg-dark p-2" aria-labelledby="navbarDropdownMenuLink">
       <div id="login">
@@ -32,7 +32,9 @@ customElements.define('auth-button', AuthButton)
 
 async function reg() {
   let result = await (
-    await fetch('https://ekarakaptan.github.io/Temp/public/reg_form.html')
+    await fetch(
+      'https://ekarakaptan.github.io/Temp/public/reg_form.html'
+    )
   ).text()
   regform.innerHTML = result
   let currentUser = null
@@ -44,11 +46,12 @@ async function reg() {
     if (event.target.files[0].size > 300000) return
     let reader = new FileReader(event.target.files[0])
     reader.onload = event =>
-      (document.getElementsByName('user-photo')[0].value = event.target.result)
+      (document.getElementsByName('user-photo')[0].value =
+        event.target.result)
     reader.readAsDataURL(event.target.files[0])
-    document.getElementById('user-photo-preview').src = URL.createObjectURL(
-      event.target.files[0]
-    )
+    document.getElementById(
+      'user-photo-preview'
+    ).src = URL.createObjectURL(event.target.files[0])
     avatar.src = document.getElementById('user-photo-preview').src
   }
 
@@ -73,20 +76,25 @@ async function reg() {
   }
 
   registerbutton.onclick = function(event) {
-    let formData = new FormData(document.getElementById('registrationForm'))
+    let formData = new FormData(
+      document.getElementById('registrationForm')
+    )
     let result = {}
     formData.forEach((val, key) =>
       Object.assign(result, {
         [key]: val
       })
     )
-    fetch(`https://garevna-rest-api.glitch.me/user/${username.value}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(result)
-    })
+    fetch(
+      `https://garevna-rest-api.glitch.me/user/${username.value}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(result)
+      }
+    )
       .then(response => response.json())
       .then(response => console.log(response))
       .then((avatar.hidden = false))

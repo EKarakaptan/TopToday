@@ -5,14 +5,24 @@ async function get_weather_by_id(container, id) {
     .then(response => createWidget(container, response))
 }
 
-async function get_weather_by_name(container, city, country_code) {
+async function get_weather_by_name(
+  container,
+  caller,
+  city,
+  country_code
+) {
   let weather_url = country_code
     ? `https://api.openweathermap.org/data/2.5/weather?q=${city},${country_code}&units=metric&APPID=e5986c1eac34b648189cb6f1a03886b9`
     : `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=e5986c1eac34b648189cb6f1a03886b9`
   fetch(weather_url)
     .then(response => response.json())
-    .then(response => createWidget(container, response))
-    .finally(response => console.log('finished'))
+    .then(response => {
+      createWidget(container, response)
+      if (caller !== 'home-button') {
+        getElem('#input_value').value = ''
+      }
+      return
+    })
 }
 
 async function get_weather_by_coord(container, lat, lon, caller) {
@@ -37,14 +47,14 @@ async function get_weather_by_coord(container, lat, lon, caller) {
       if (caller === 'random-button') {
         getElem('#random').innerHTML = `
         <a class="navbar-brand text-light m-auto" id="random" title="Random City">
-          <h3 class="fas fa-globe m-0"></h3>
+          <h4 class="fas fa-globe m-0"></h4>
         </a>
         `
       } else {
         if (caller === 'location-button') {
           getElem('#location').innerHTML = `
         <a class="navbar-brand text-light m-auto" id="location" title="Current Location">
-          <h3 class="fas fa-location-arrow m-0"></h3>
+          <h4 class="fas fa-location-arrow m-0"></h4>
         </a>
         `
         }

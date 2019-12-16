@@ -56,13 +56,23 @@ class Menu extends HTMLElement {
                         <i class="fas fa-microchip"></i> technology
                     </label>
                 </div>
-            </div>            
+            </div>
             <div id='key' class="form-check form-check-inline dropdown-item p-2">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="keywords..."
-                        aria-label="Text input with radio button" id="keyword" />
-                </div>
-            </div>            
+
+                <form id="news_form" class="input-group">
+                    <input id="keyword" type="text" class="form-control border-right-0" placeholder="Keyword..."
+                        aria-label="Search" aria-describedby="button-addon2" />
+                    <div class="input-group-append warning">
+                        <p id="news_clear" class="input-group-text bg-white text-warning" data-toggle="tooltip"
+                            data-placement="bottom" title="Clear">
+                            <i class="fas fa-chevron-left"></i>
+                        </p>
+                        <button id="news_submit_button" class="btn btn-outline-warning" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
     `
@@ -86,7 +96,8 @@ class Menu extends HTMLElement {
       )
     }
 
-    getElem(`#key`).onchange = event => {
+    getElem(`#key`).onsubmit = event => {
+      event.preventDefault()
       data.keyword = getElem(`#keyword`).value
       getElem(`#nav_news_key`).hidden =
         getElem(`#keyword`).value === ''
@@ -104,6 +115,9 @@ class Menu extends HTMLElement {
         '#carousel2'
       )
     }
+
+    getElem('#news_clear').onclick = event =>
+      (getElem('#keyword').value = '')
   }
 }
 customElements.define('menu-component', Menu)

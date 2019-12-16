@@ -1,5 +1,3 @@
-const history = []
-
 class HistoryItem extends HTMLElement {
   constructor(city, country, id, temp, icon) {
     super()
@@ -22,10 +20,10 @@ class HistoryItem extends HTMLElement {
     let style = document.createElement('style')
     style.textContent = `
       .img-condition {
-      max-width: 100%;
-      position: relative;
-      top: -18px;
-      left: -15px;
+          max-width: 100%;
+          position: relative;
+          top: -18px;
+          left: -15px;
       }
 
       .thumbnail {
@@ -52,6 +50,7 @@ class HistoryItem extends HTMLElement {
     //     : null
     //   addWidget(item.name, 'widget_2')
     // }
+
     getElem('#recent_places').appendChild(item)
     getElem('#recent_places').appendChild(style)
     item.getElementsByTagName('mark')[0].innerText = `${temp}°C`

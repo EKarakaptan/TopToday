@@ -80,8 +80,13 @@ class Menu extends HTMLElement {
 
     getElem(`#News_selector`).onchange = event => {
       data.category = `${event.target.value}`
+
       getElem(`#nav_news_icon`).innerHTML =
         event.target.nextSibling.nextSibling.innerHTML
+      data.keyword = getElem(`#keyword`).value
+      getElem(`#nav_news_key`).hidden =
+        getElem(`#keyword`).value === ''
+
       getNews(
         data.country1,
         data.category,
@@ -118,6 +123,35 @@ class Menu extends HTMLElement {
 
     getElem('#news_clear').onclick = event =>
       (getElem('#keyword').value = '')
+
+    getElem(`#navbarDropdownMenuLink`).onclick = () =>
+      console.log(this, 'обзёрвер на закрытие меню')
+    // let observed_menu = getElem(`#navbarDropdownMenuLink`)
+    // var observer = new MutationObserver(function() {
+    //   if (
+    //     observed_menu.attributes['aria-expanded'].value === 'true'
+    //   ) {
+    //     return
+    //   }
+    //   getNews(
+    //     data.country1,
+    //     data.category,
+    //     data.keyword,
+    //     '#carousel1'
+    //   )
+    //   getNews(
+    //     data.country2,
+    //     data.category,
+    //     data.keyword,
+    //     '#carousel2'
+    //   )
+
+    //   console.log('closed')
+    // })
+
+    // observer.observe(observed_menu, {
+    //   attributes: true
+    // })
   }
 }
 customElements.define('menu-component', Menu)

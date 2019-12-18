@@ -128,22 +128,26 @@ class Menu extends HTMLElement {
       ) {
         return
       }
-      data.keyword = getElem(`#keyword`).value
-      getElem(`#nav_news_key`).hidden =
-        getElem(`#keyword`).value === ''
 
-      getNews(
-        data.country1,
-        data.category,
-        data.keyworde,
-        '#carousel1'
-      )
-      getNews(
-        data.country2,
-        data.category,
-        data.keyword,
-        '#carousel2'
-      )
+      if (data.keyword !== getElem(`#keyword`).value) {
+        data.keyword = getElem(`#keyword`).value
+        getElem(`#nav_news_key`).hidden =
+          getElem(`#keyword`).value === ''
+
+        getNews(
+          data.country1,
+          data.category,
+          data.keyword,
+          '#carousel1'
+        )
+        getNews(
+          data.country2,
+          data.category,
+          data.keyword,
+          '#carousel2'
+        )
+        return
+      }
     })
 
     observer.observe(observed_menu, {

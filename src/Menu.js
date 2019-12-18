@@ -75,6 +75,14 @@ class Menu extends HTMLElement {
     `
     this.appendChild(wrapper)
 
+    let style = document.createElement('style')
+    style.textContent = `
+      .dropdown-item:hover {
+        background-color: rgb(254,179,38);        
+      }
+      `
+    this.appendChild(style)
+
     getElem(`#News_selector`).onchange = event => {
       data.category = `${event.target.value}`
 

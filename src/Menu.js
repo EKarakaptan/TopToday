@@ -66,10 +66,7 @@ class Menu extends HTMLElement {
                         <p id="news_clear" class="input-group-text bg-white text-warning" data-toggle="tooltip"
                             data-placement="bottom" title="Clear">
                             <i class="fas fa-chevron-left"></i>
-                        </p>
-                        <button id="news_submit_button" class="btn btn-outline-warning" type="button">
-                            <i class="fas fa-search"></i>
-                        </button>
+                        </p>                        
                     </div>
                 </form>
             </div>
@@ -124,34 +121,34 @@ class Menu extends HTMLElement {
     getElem('#news_clear').onclick = event =>
       (getElem('#keyword').value = '')
 
-    getElem(`#navbarDropdownMenuLink`).onclick = () =>
-      console.log(this, 'обзёрвер на закрытие меню')
-    // let observed_menu = getElem(`#navbarDropdownMenuLink`)
-    // var observer = new MutationObserver(function() {
-    //   if (
-    //     observed_menu.attributes['aria-expanded'].value === 'true'
-    //   ) {
-    //     return
-    //   }
-    //   getNews(
-    //     data.country1,
-    //     data.category,
-    //     data.keyword,
-    //     '#carousel1'
-    //   )
-    //   getNews(
-    //     data.country2,
-    //     data.category,
-    //     data.keyword,
-    //     '#carousel2'
-    //   )
+    let observed_menu = getElem(`#navbarDropdownMenuLink`)
+    var observer = new MutationObserver(function() {
+      if (
+        observed_menu.attributes['aria-expanded'].value === 'true'
+      ) {
+        return
+      }
+      data.keyword = getElem(`#keyword`).value
+      getElem(`#nav_news_key`).hidden =
+        getElem(`#keyword`).value === ''
 
-    //   console.log('closed')
-    // })
+      getNews(
+        data.country1,
+        data.category,
+        data.keyworde,
+        '#carousel1'
+      )
+      getNews(
+        data.country2,
+        data.category,
+        data.keyword,
+        '#carousel2'
+      )
+    })
 
-    // observer.observe(observed_menu, {
-    //   attributes: true
-    // })
+    observer.observe(observed_menu, {
+      attributes: true
+    })
   }
 }
 customElements.define('menu-component', Menu)

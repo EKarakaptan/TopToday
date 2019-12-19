@@ -1,4 +1,4 @@
-function createWidget(container, response) {
+function createWidget(container, response, caller) {
   state = {
     city: response.name,
     country: response.sys.country,
@@ -93,7 +93,12 @@ function createWidget(container, response) {
     ? (container.childNodes[0].innerHTML = weather_elem_content)
     : container.appendChild(weather_elem)
 
-  getNews(state.country, data.category, data.keyword, `#carousel${widgetId}`)
+  getNews(
+    state.country,
+    data.category,
+    data.keyword,
+    `#carousel${widgetId}`
+  )
 
   if (widgetId == 1) {
     data.country1 = state.country
@@ -105,5 +110,14 @@ function createWidget(container, response) {
     }
   }
 
-  new HistoryItem(state.city, state.country, 2, state.temp, state.icon)
+  if (caller !== 'history-item') {
+    new HistoryItem(
+      state.city,
+      state.country,
+      2,
+      state.temp,
+      state.icon
+    )
+  }
+  return
 }

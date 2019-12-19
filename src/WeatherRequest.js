@@ -17,7 +17,7 @@ async function get_weather_by_name(
   fetch(weather_url)
     .then(response => response.json())
     .then(response => {
-      createWidget(container, response)
+      createWidget(container, response, caller)
       if (caller !== 'home-button') {
         getElem('#input_value').value = ''
       }

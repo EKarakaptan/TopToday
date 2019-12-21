@@ -24,7 +24,21 @@ class AuthButton extends HTMLElement {
     </div> 
     `
 
+    let style = document.createElement('style')
+    style.textContent = `
+      #auth_btn {                   
+          cursor: pointer           
+      }
+
+      #auth_btn :hover {
+          color: #ffbf3c;          
+          transform: scale(1.15);                              
+          transition: transform 0.05s ease-in-out         
+      }
+      `
+
     this.appendChild(wrapper)
+    this.appendChild(style)
   }
 }
 customElements.define('auth-button', AuthButton)

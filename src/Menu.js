@@ -77,8 +77,19 @@ class Menu extends HTMLElement {
 
     let style = document.createElement('style')
     style.textContent = `
+      #navbarDropdownMenuLink:hover, 
+      #navbarDropdownMenuLink:focus{
+        color: #feb326 !important;
+        transform: scale(1.1);                              
+        transition: transform 0.01s ease-in-out         
+      } 
+
       .dropdown-item:hover {
-        background-color: rgb(254,179,38);        
+        background: linear-gradient(45deg, chocolate 0%, #feb326 100%);
+      }
+
+      .form-check-label {
+        cursor: pointer        
       }
       `
     this.appendChild(style)

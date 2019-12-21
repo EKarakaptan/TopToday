@@ -76,7 +76,7 @@ class Main extends HTMLElement {
         </div>
     </div>
 
-    <div class="container bg-light pt-2" style='height: 230px'>
+    <div class="container bg-light pt-2" style='height: 250px'>
         <div id="history_block" class="container-fluid card-container">
             <h5 class="card-title">Recent places</h5>
             <div id="recent_places" style="height: 150px" class="row text-center flex-nowrap flex-wrap rounded">

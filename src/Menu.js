@@ -83,6 +83,27 @@ class Menu extends HTMLElement {
       `
     this.appendChild(style)
 
+    getElem('#nav_news_indicator').onclick = event => {
+      getElem(`#c2`).checked = true
+      getElem(`#keyword`).value = ''
+      data.category = 'general'
+      data.key = ''
+      getNews(
+        data.country1,
+        data.category,
+        data.keyword,
+        '#carousel1'
+      )
+      getNews(
+        data.country2,
+        data.category,
+        data.keyword,
+        '#carousel2'
+      )
+      getElem('#nav_news_icon').hidden = true
+      getElem('#nav_news_key').hidden = true
+    }
+
     getElem(`#News_selector`).onchange = event => {
       data.category = `${event.target.value}`
 
@@ -104,6 +125,7 @@ class Menu extends HTMLElement {
         data.keyword,
         '#carousel2'
       )
+      getElem('#nav_news_icon').hidden = false
     }
 
     getElem(`#key`).onsubmit = event => {
@@ -124,6 +146,7 @@ class Menu extends HTMLElement {
         data.keyword,
         '#carousel2'
       )
+      getElem('#nav_news_key').hidden = false
     }
 
     getElem('#news_clear').onclick = event =>

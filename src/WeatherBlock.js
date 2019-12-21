@@ -8,7 +8,10 @@ function createWidget(container, response, caller) {
     wind: response.wind.speed,
     humidity: response.main.humidity,
     pressure: Math.round(response.main.pressure * 0.75),
-    time: new Date(response.dt * 1000).toLocaleTimeString()
+    time: new Date(response.dt * 1000).toLocaleTimeString(),
+    country_name: codes.find(
+      country => country.code === response.sys.country
+    ).name
   }
 
   let widgetId = container.id[container.id.length - 1]
@@ -22,7 +25,7 @@ function createWidget(container, response, caller) {
         <div class="widget-right__header widget-right__header--brown">
           <div class="widget-right__layout">
             <div>
-              <h2 class="widget-right__title">${state.city}, ${state.country}</h2>
+              <h2 class="widget-right__title">${state.city}, ${state.country_name} (${state.country})</h2>
               <p class="widget-right__description">${state.description}</p>
             </div>
           </div>
@@ -30,7 +33,7 @@ function createWidget(container, response, caller) {
             src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/${state.icon}.png"
             width="128"
             height="128"
-            alt="Weather in ${state.city}, ${state.country}"
+            alt="Weather in ${state.city}, ${state.country_name}"
             class="weather-right__icon weather-right__icon--type1"
           />
         </div>

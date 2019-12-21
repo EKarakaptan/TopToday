@@ -25,7 +25,7 @@ function createWidget(container, response, caller) {
         <div class="widget-right__header widget-right__header--brown">
           <div class="widget-right__layout">
             <div>
-              <h4 class="font-weight-bold text-left" style="max-width: 160px;">${state.city}, ${state.country}</h4>              
+              <h4 class="font-weight-bold text-left" style="max-width: 160px;">${state.city}</h4>              
               <p class="text-left widget-right__description">${state.description}</p>
             </div>
           </div>

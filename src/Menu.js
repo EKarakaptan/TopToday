@@ -84,10 +84,11 @@ class Menu extends HTMLElement {
     this.appendChild(style)
 
     getElem('#nav_news_indicator').onclick = event => {
+      data.category = 'general'
+      data.keyword = ''
       getElem(`#c2`).checked = true
       getElem(`#keyword`).value = ''
-      data.category = 'general'
-      data.key = ''
+
       getNews(
         data.country1,
         data.category,

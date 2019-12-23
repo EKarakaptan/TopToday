@@ -10,12 +10,7 @@ class HistoryItem extends HTMLElement {
     item.onclick = () => {
       data.country2 = country
       data.city2 = city
-      get_weather_by_name(
-        widget,
-        'history-item',
-        data.city2,
-        data.country2
-      )
+      get_weather_by_name(widget, 'history-item', data.city2, data.country2)
     }
     item.innerHTML = `      
       <div class="thumbnail text-center shadow rounded">

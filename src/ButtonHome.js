@@ -11,23 +11,21 @@ class HomeButton extends HTMLElement {
       <h4 class="fas fa-home m-0"></h4>
     </a>
     `
-
     let style = document.createElement('style')
     style.textContent = `
-      .fas{          
+      #home {                   
           cursor: pointer           
       }
 
-      .fas :hover {
-          color: gold;
-          transform: scale(1.5);                              
-          transition: color 0.1s ease-in-out         
+      #home :hover {
+          color: #ffbf3c;          
+          transform: scale(1.15);                              
+          transition: transform 0.05s ease-in-out         
       }
       `
 
-    this.appendChild(style)
     this.appendChild(wrapper)
-
+    this.appendChild(style)
     let widget = getElem('#widget_1')
 
     this.onclick = event => {

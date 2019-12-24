@@ -5,12 +5,7 @@ async function get_weather_by_id(container, id) {
     .then(response => createWidget(container, response))
 }
 
-async function get_weather_by_name(
-  container,
-  caller,
-  city,
-  country_code
-) {
+async function get_weather_by_name(container, caller, city, country_code) {
   let weather_url = country_code
     ? `https://api.openweathermap.org/data/2.5/weather?q=${city},${country_code}&units=metric&APPID=e5986c1eac34b648189cb6f1a03886b9`
     : `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=e5986c1eac34b648189cb6f1a03886b9`
@@ -31,8 +26,7 @@ async function get_weather_by_coord(container, lat, lon, caller) {
     .then(response => response.json())
     .then(response => {
       if (response.message !== 'accurate') {
-        rand = (min, max) =>
-          Math.round(Math.random() * (max - min) + min)
+        rand = (min, max) => Math.round(Math.random() * (max - min) + min)
         let lat = rand(-90, 90)
         let lon = rand(-180, 180)
         setTimeout(
@@ -62,3 +56,22 @@ async function get_weather_by_coord(container, lat, lon, caller) {
     })
     .catch(err => console.log(err))
 }
+
+async function get_forecast_by_name(container, caller, city, country_code) {
+  let weather_url = country_code
+    ? `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country_code}&units=metric&APPID=e5986c1eac34b648189cb6f1a03886b9`
+    : `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=e5986c1eac34b648189cb6f1a03886b9`
+  fetch(weather_url)
+    .then(response => response.json())
+    .then(response => {
+      // console.log(response.list)
+      let time = response.list.map(current =>
+        new Date(current.dt * 1000).toLocaleString()
+      )
+      let w = response.list.map(current => current.weather[0].main)
+      console.log(w)
+
+      createForecast(container, response, caller)
+    })
+}
+// get_forecast_by_name(forecast_block, '', 'Kharkiv', 'UA')

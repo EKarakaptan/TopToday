@@ -16,9 +16,8 @@ class Main extends HTMLElement {
     <div id="navbar" class="bg-light sticky-top">
         <nav class="navbar navbar-dark bg-dark p-0">
             <div class="container p-0">
-                <div id="nav_menu_button" class="nav-item dropdown p-0 ml-auto mr-auto"></div>
-                <div class="navbar text-light m-0 p-0"></div>
-                  <div class="ul p-0 mr-auto">
+                <div id="nav_menu_button" class="nav-item dropdown p-0 ml-auto mr-auto"></div>                
+                  <div id="nav_news_indicator" class="ul p-0 mr-auto" style="cursor: pointer" title="Click to reset">
                     <div id="nav_news_icon" class="li text-light"></div>                                           
                     <div id="nav_news_key" class="li text-light text-center" hidden>keyword</div>                                      
                   </div>                
@@ -34,6 +33,7 @@ class Main extends HTMLElement {
 
     <div id="regform" class="container bg-light d-flex justify-content-around pt-1"></div>
 
+    <div id="forecast_block" class="container bg-light pt-1"></div>
     <div id="widgets_block" class="container bg-light pt-1">
         <div class="card-deck">
             <div class="card shadow-sm">
@@ -77,7 +77,7 @@ class Main extends HTMLElement {
         </div>
     </div>
 
-    <div class="container bg-light pt-2">
+    <div class="container bg-light pt-2" style='height: 250px'>
         <div id="history_block" class="container-fluid card-container">
             <h5 class="card-title">Recent places</h5>
             <div id="recent_places" style="height: 150px" class="row text-center flex-nowrap flex-wrap rounded">

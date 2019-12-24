@@ -50,7 +50,7 @@ class HistoryItem extends HTMLElement {
       }
 
       .card-container>.row {
-          overflow-x: auto;
+          overflow-x: auto;          
       }
       `
 

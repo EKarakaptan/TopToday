@@ -77,11 +77,44 @@ class Menu extends HTMLElement {
 
     let style = document.createElement('style')
     style.textContent = `
+      #navbarDropdownMenuLink:hover, 
+      #navbarDropdownMenuLink:focus{
+        color: #feb326 !important;
+        transform: scale(1.1);                              
+        transition: transform 0.01s ease-in-out         
+      } 
+
       .dropdown-item:hover {
-        background-color: rgb(254,179,38);        
+        background: linear-gradient(45deg, chocolate 0%, #feb326 100%);
+      }
+
+      .form-check-label {
+        cursor: pointer        
       }
       `
     this.appendChild(style)
+
+    getElem('#nav_news_indicator').onclick = event => {
+      data.category = 'general'
+      data.keyword = ''
+      getElem(`#c2`).checked = true
+      getElem(`#keyword`).value = ''
+
+      getNews(
+        data.country1,
+        data.category,
+        data.keyword,
+        '#carousel1'
+      )
+      getNews(
+        data.country2,
+        data.category,
+        data.keyword,
+        '#carousel2'
+      )
+      getElem('#nav_news_icon').hidden = true
+      getElem('#nav_news_key').hidden = true
+    }
 
     getElem(`#News_selector`).onchange = event => {
       data.category = `${event.target.value}`
@@ -104,6 +137,7 @@ class Menu extends HTMLElement {
         data.keyword,
         '#carousel2'
       )
+      getElem('#nav_news_icon').hidden = false
     }
 
     getElem(`#key`).onsubmit = event => {
@@ -124,6 +158,7 @@ class Menu extends HTMLElement {
         data.keyword,
         '#carousel2'
       )
+      getElem('#nav_news_key').hidden = false
     }
 
     getElem('#news_clear').onclick = event =>

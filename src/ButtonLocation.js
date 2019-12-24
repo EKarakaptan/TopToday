@@ -11,7 +11,21 @@ class LocationButton extends HTMLElement {
       <h4 class="fas fa-location-arrow m-0"></h4>
     </a>
     `
+    let style = document.createElement('style')
+    style.textContent = `
+      #location {                   
+          cursor: pointer           
+      }
+
+      #location :hover {
+          color: #ffbf3c;
+          transform: scale(1.15);                              
+          transition: transform 0.05s ease-in-out         
+      }
+      `
     this.appendChild(wrapper)
+    this.appendChild(style)
+
     let widget = getElem('#widget_1')
 
     this.onclick = event => {

@@ -64,14 +64,29 @@ async function get_forecast_by_name(container, caller, city, country_code) {
   fetch(weather_url)
     .then(response => response.json())
     .then(response => {
-      // console.log(response.list)
-      let time = response.list.map(current =>
-        new Date(current.dt * 1000).toLocaleString()
-      )
-      let w = response.list.map(current => current.weather[0].main)
-      console.log(w)
+      console.log(response.list)
+      let time_value = response.list.map(current => {
+        let time = new Date(current.dt * 1000).toLocaleString()
+        let w_pic = `https://openweathermap.org/img/w/${current.weather[0].icon}.png`
+        let w = current.weather[0].main
+        let t_max = Math.round(current.main.temp_max)
+        let t_min = Math.round(current.main.temp_min)
+        let t_feels = Math.round(current.main.feels_like)
+        let forecast_item = document.createElement('ul')
+        forecast_item.innerHTML = `
+        <li class="calendar__item">
+                <br>
+                ${time}
+                <img src=${w_pic} width="32" height="32" alt="Today">
+                <p>${t_max}</p>
+                <p>${t_min}</p>
+                <p>${t_feels}</p>
+              </li>
+        `
+        forecast_block2.appendChild(forecast_item)
+      })
 
-      createForecast(container, response, caller)
+      // createForecast(container, response, caller)
     })
 }
 // get_forecast_by_name(forecast_block, '', 'Kharkiv', 'UA')

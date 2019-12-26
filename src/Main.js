@@ -34,6 +34,7 @@ class Main extends HTMLElement {
     <div id="regform" class="container bg-light d-flex justify-content-around pt-1"></div>
 
     <div id="forecast_block" class="container bg-light pt-1"></div>
+    <div id="forecast_block2" class="calendar container bg-light pt-1"></div>
     <div id="widgets_block" class="container bg-light pt-1">
         <div class="card-deck">
             <div class="card shadow-sm">

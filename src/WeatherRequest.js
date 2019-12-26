@@ -65,7 +65,7 @@ async function get_forecast_by_name(container, caller, city, country_code) {
     .then(response => response.json())
     .then(response => {
       console.log(response.list)
-      let time_value = response.list.map(current => {
+      response.list.map(current => {
         let time = new Date(current.dt * 1000).toLocaleString()
         let w_pic = `https://openweathermap.org/img/w/${current.weather[0].icon}.png`
         let w = current.weather[0].main
